@@ -1,0 +1,89 @@
+TABELAS EM HTML
+
+<!-- NÃO SE PODE USAR TABELAS PARA CRIAR A ESTRUTURA (LAYOUT) DO SITE -->
+
+- tabelas são perfeitas para exibir um conjunto tabulado de dados/uma planilha
+
+- HIERARQUIA DE TABELAS (simples)
+        TABLE = tabela
+        TABLE ROW = linha (fileira) de tabela
+        TABLE HEADER = cabeçalho de tabela
+        TABLE DATA   = dados de tabela
+
+- se a hierarquia não for respeitada, a tabela ficará bagunçada (input aparecendo antes ou depois da tabela)
+
+<table> 	 = abre a tabela
+<tr> (table row) = abre uma linha (fileira) da tabela
+<td> 		 = permite a inserção de dados dentro da <tr>
+<th> 		 = permite a inserção de um título dentro da <tr> (títulos classificam as informações. Ex.: <th>Habitantes de Londrina</th> | <td>600.000</td>
+
+- PARA CADA ROW DA TABELA, CRIAR UM <tr>
+
+- pode-se adicionar class ou id tanto nas <tr> quanto nas <td>, de forma a estilizar cada elemento da forma desejada
+
+- ALINHAMENTOS DE <TD> 
+
+         text-align: center; /* ALINHAMENTO HORIZONTAL */	(compreende os valores LEFT / CENTER/ RIGHT)
+         vertical-align: middle; /* ALINHAMENTO VERTICAL */	(compreende os valores TOP / MID / BOTTOM)
+
+- SEMÂNTICA DE TABELAS
+
+<thead>  = cabeçalho da tabela
+<tbody>  = corpo da tabela
+<tfoot>  = rodapé da tabela
+<caption>= legenda da tabela (aparece em cima do cabeçalho)
+
+- ESCOPO DE TABELAS  (ESCOPO DE <th>)
+
+o scope="row/rowgroup|col/colgroup" define onde se localizam os <td> referentes ao <th> no qual o scope está inserido. é util para que os mecanismos de busca analisem os dados de forma coerente. --- NÃO CAUSA RESULTADO VISUAL ---
+
+tipos de scope= row: 		linha/fileira
+		rowgroup:	linhas compreendidas pelo span de um th, mas sempre ter atenção se os dados realmente correspondem a um grupo, ou a uma row única
+		col:		coluna
+		colgroup:	colunas compreendidas pelo span de um th, mas sempre ter atenção se os dados realmente correspondem a um grupo, ou a uma coluna única
+
+- EFEITO ZEBRADO EM TABELAS
+
+usar a pseudoclasse 	:nth-child()
+opções da pseudoclasse  :(xn)|(odd)|(even)
+
+- CABEÇALHO FIXO PARA TABELAS GRANDES (tabelas com muitas linhas)
+
+usar position:relative na <table> para poder manipular o que está dentro dela
+usar position:sticky no thead > tr > th & top:0 para fixar o cabeçalho no topo da tela ao rolar a tabela (experimentar com -1px no top)
+
+- MESCLAGEM DE CÉLULAS
+
+na célula escolhida, usar o colspan="x" para fazer com que a célula ocupe x colunas (se expanda horizontalmente)
+		     usar o rowspan="x" para fazer com que a célula ocupe x linhas  (se expanda verticalmente)
+
+- ESTILIZAÇÃO DE GRUPOS DE LINHA E COLUNA
+
+na <tr> escolhida, adicionar a class="" desejada e estilizar no css
+
+para colunas, deve-se adicionar a tag <colgroup> dentro da <table>, e criar uma tag <col> para cada coluna da tabela. então, dar class ou id para as colunas desejadas e estilizar no css
+
+
+
+ Ex:	HTML:			<table>
+				<colgroup>
+            		                <col class="cnome">
+            		                <col class="cgrupo" span="2">	(2 colunas serão formatadas)
+            		                <col class="cprof">
+        		        </ colgroup>
+				</table>
+
+	        CSS:	col cgrupo {
+            		                background-color: red;
+		                }
+
+
+TAMBÉM É POSSÍVEL : colgroup>col:nth-child(2n) {
+            		background-color: aqua;
+        			}
+
+- RESPONSIVIDADE NAS TABELAS
+
+é possível evitar que o site todo ganhe rolagem lateral ao diminuir a largura da janela, fazendo com que só a tabela ganhe rolagem lateral. para isso:
+
+-envelope a <table> numa <div>, e dê um id à ela. no css, utilize o parâmetro overflow-x (x=largura), com o valor "auto".

@@ -1,0 +1,13 @@
+Repositório local 	= armazenamento de arquivos locais, no pc. (git)
+Repositório remoto	= armazenamento de arquivos em um servidor, remotamente. (github) 
+
+GIT = Faz versionamento de código local, de forma que é possível reverter atualiações.
+GITHUB= Site que serve de repositório remoto e que pode ser integrado ao git. (É como um backup do seu repositório, e serve também como hospedagem)
+
+Mandar o arquivo para o repositório remoto = PUSH
+
+Após fazer uma alteração nos códigos locais, deve-se realizar o COMMIT no github desktop, assim confirmando a alteração. 
+
+Após isso, deve-se fazer o PUSH para enviar a alteração para o repositório remoto.
+
+
