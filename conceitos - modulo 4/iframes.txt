@@ -1,4 +1,40 @@
 IFRAMES		i=inline | frame=quadro
 
+Iframes podem ser usados para incorporar mapas, vídeos, apresentações, formulários, etc.
+
+DIFERENÇA ENTRE FRAME E IFRAME = EVITAR FRAME QUE É ANTIGO | IFRAME PODE-SE USAR AINDA
+
+anatomia da tag = src=" " (endereço do conteúdo do iframe (se preenchido, abrirá junto com a página))
+		  frameborder="0/1" (define se há ou não borda no iframe)
+		  height/width="x" (autoexplicativo)
+		  scrolling="yes/no/auto" (autoexplicativo)
+    --------------name="  " (DEVE-SE COLOCAR O NOME DESEJADO PARA QUE O <A> POSSA REFERENCIAR O IFRAME E ABRIR O CONTEÚDO NELE) ---------------
+		  srcdoc="  " (coloca-se código html dentro desse parâmetro, e o conteúdo estático será exibido no iframe) ((NÃO RECOMENDADO))
+
 - o iframe é basicamente uma instância de um site escolhido dentro do seu site, mas nem todo site permite conexão por iframe.
 
+- no espaço entre a abertura e fechamento do <iframe> deve ser colocado um texto alt, para exibição caso o navegador não suporte o conteúdo. É RECOMENDADO USAR UM <A> com o href= do site em questão.
+
+- a configuração do CSS sobrepõe o que é definido na tag <iframe>
+
+- para colocar uma página local no iframe, basta colocar o nome dela no src do iframe
+
+- para abrir um <a> em um <iframe> vazio, deve-se utilizar o parâmetro name="" na tag do iframe, antes do 'src', e referenciar esse name no target do <a>
+
+
+
+------------------------------------------------INCONVENIENTES DO IFRAME----------------------------------------------------------
+
+- o google bot PODE não conseguir acessar o conteúdo de dentro do iframe para indexação, o que prejudicaria a indexação do seu site 
+			           EVITE CONTEÚDO MUITO IMPORTANTE DENTRO DO IFRAME POR ESSE MOTIVO
+
+- softwares de leitura de tela (para cegos) podem ter dificuldades com iframes
+
+- problemas de usabilidade (o navegador pode se confundir entre se o target="_blank" deve abrir nova janela dentro do iframe ou do conteúdo principal)
+  			   (ao tentar retornar à pagina inicial, o navegador pode se confundir entre voltar dentro do iframe ou no conteúdo principal)
+
+- SEGURANÇA = o iframe, por abrir conexão com outro site(caso você faça um link com um site externo) pode abrir uma porta para ataques XSS(?)
+
+-----------------------------------------------------------------TORNANDO IFRAMES MAIS SEGUROS------------------------------------------------------------------------------------
+
+https://www.youtube.com/watch?v=mRhjlDN4Ezo
