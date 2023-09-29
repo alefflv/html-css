@@ -1,0 +1,4 @@
+IFRAMES		i=inline | frame=quadro
+
+- o iframe é basicamente uma instância de um site escolhido dentro do seu site, mas nem todo site permite conexão por iframe.
+
